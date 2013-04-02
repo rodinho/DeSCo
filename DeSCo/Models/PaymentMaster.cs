@@ -8,16 +8,18 @@
 //------------------------------------------------------------------------------
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 
 namespace DeSCo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class PaymentMaster
     {
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
         public string BatchNo { get; set; }
@@ -25,7 +27,7 @@ namespace DeSCo.Models
         public string OweTo { get; set; }
         public Nullable<double> PaidAmt { get; set; }
 
-         [DataType(DataType.Currency)]
+        [DataType(DataType.Currency)]
         public double Balance { get; set; }
         public string Remarks { get; set; }
         public Nullable<System.DateTime> PaidDate { get; set; }
@@ -34,9 +36,10 @@ namespace DeSCo.Models
         public string Verifiedby { get; set; }
         public string Status { get; set; }
 
+        
         [DataType(DataType.Currency)]
         public Double ADCH { get; set; }
 
-        
+
     }
 }

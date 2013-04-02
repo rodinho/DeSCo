@@ -1,39 +1,31 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/site.css")" rel="stylesheet" type="text/css" />
 
-    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
- 
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.6.2.min.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/jqsimplemenu.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jqsimplemenu.js")" type="text/javascript"></script>
 
-    @*    <script src="@Url.Content("~/Scripts/jqsimplemenu.js")" type="text/javascript"></script>
-     <link href="@Url.Content("~/Content/jqsimplemenu.css")" rel="stylesheet" type="text/css" />
-     <script src="@Url.Content("~/Scripts/jquery-1.6.2.min.js")" type="text/javascript"></script>*@
-    
 
-    
-    @*  @Html.Partial("Menu")*@
 
-    @RenderSection("Content", false)
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
-    <body style="font-size:80%;">
 
-        <header>
-            <div  class="content-wrapper">
-                <div class="float-left"  >
-                    <p  class="site-title" >@Html.ActionLink(".:: Credit Collection System ::.", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
+
+
+<body style="font-size: 80%;">
+
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">@Html.ActionLink(".:: Credit Collection System ::.", "Index", "Home")</p>
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+                @*  <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("Account", "Customization", "Company")</li>
@@ -43,31 +35,33 @@
                             <li>@Html.ActionLink("Report", "Contact", "Home")</li>
                         </ul>
                     </nav>
-                </div>
-            </div> 
-        </header>
-
-        <div id="body" >
-            @*    RenderSection("featured", required: false)*@
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
-        </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
-                </div>
+                </div>*@
+                @Html.Partial("Menu")
             </div>
-        </footer>
+    </header>
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-    </body>
-    
-     @*<script type="text/javascript">
-         $(document).ready(function () {
-             $('.menu').jqsimplemenu();
-         });
-</script>*@
+    <div id="body">
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - Credit Collection Application</p>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.menu').jqsimplemenu();
+    });
+</script>
 </html>
+
+

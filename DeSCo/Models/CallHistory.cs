@@ -1,11 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 
 namespace DeSCo.Models
 {
     public class CallHistory
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [HiddenInput(DisplayValue = false)]
         public string Id { get; set; }
 

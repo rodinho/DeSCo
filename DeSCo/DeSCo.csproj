@@ -485,6 +485,7 @@
     <Content Include="php\rest\remove.php" />
     <Content Include="php\tableFormatting.php" />
     <Content Include="php\tableOnlyData.php" />
+    <Content Include="Scripts\jquery-1.6.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.2\demos\autocomplete\search.php" />
     <Content Include="Scripts\jquery-ui-1.10.2\demos\tabs\ajax\content3-slow.php" />
     <Content Include="Scripts\jquery-ui-1.10.2\demos\tabs\ajax\content4-broken.php" />

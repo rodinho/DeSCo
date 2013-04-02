@@ -6,18 +6,28 @@
     @foreach (var mp in menuList.Where(p => p.ParentId == 0))
     {
     
-        <li><a href="#">@mp.Name</a>
+        <li> {
+             <a href="#">@mp.Name</a>
+            }
+             if (@mp.Name=="Account")
+             {
+             <a href="..\Company\Customization">@mp.Name</a>
+            }
+            
+           
+
+           
             @if (menuList.Count(p => p.ParentId == mp.Id) > 0)
             {
                 @:<ul>
-        }
+            }
 
             @RenderMenuItem(menuList, mp)
        
-        @if (menuList.Count(p => p.ParentId == mp.Id) > 0)
-        {
-            @:</ul>
-                    }
+            @if (menuList.Count(p => p.ParentId == mp.Id) > 0)
+            {
+                @:</ul>
+            }
 
         </li>
     }
@@ -30,8 +40,9 @@
     {
       
         
-    @:<li>
-<a href="#">@cp.Name</a>
+        @:<li>
+           
+        <a href="#">@cp.Name</a>
     
         if (menuList.Count(p => p.ParentId == cp.Id) > 0)
         {
@@ -42,7 +53,7 @@
         if (menuList.Count(p => p.ParentId == cp.Id) > 0)
         {
           @:</ul>
-      }
+        }
         else
         {
           @:</li>

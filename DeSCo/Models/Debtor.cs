@@ -17,22 +17,7 @@ namespace DeSCo.Models
         public virtual ICollection<CallHistory> CallCollection { get; set; }
         public virtual ICollection<SiteVisit> VisitCollection { get; set; }
         public virtual ICollection<PaymentMaster> PaymentCollection { get; set; }
-
-
-        //List<CallHistory> _mList = new List<CallHistory>();
-        //public List<CallHistory> CallCollection
-        //{
-        //    get { return _mList; }
-        //    set { _mList = value; }
-        //}
-
-
-        //List<SiteVisit> _mVisitList = new List<SiteVisit>();
-        //public List<SiteVisit> VisitCollection
-        //{
-        //    get { return _mVisitList; }
-        //    set { _mVisitList = value; }
-        //}
+        public virtual ICollection<Contact > ContactCollection { get; set; }
 
 
         private static int _nextId = 17;
@@ -42,9 +27,6 @@ namespace DeSCo.Models
             Id = _nextId++;
             
         }
-
-
-
 
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
