@@ -1,0 +1,42 @@
+﻿@model System.DateTime?
+@Html.Label("")
+<br />
+@*@Html.TextBox("",Model.HasValue ? Model.Value.ToShortDateString() : "")*@
+
+@if ( Model.HasValue )
+{
+    @Html.TextBox("", String.Format("{0:d}", Model.Value), new {@class = "date", @style = "width:300px;"})
+}
+else {
+   @Html.TextBox( "" , String.Format( "{0:d}" , DateTime.MinValue ) , new { @class = "textbox" , @style = "width:300px;" } )
+}
+
+
+@*@Html.TextBox("", Model.ToString("dd/MM/yyyy"), new { @class = "date" })*@
+<br />
+
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Datepicker - Default functionality</title>
+
+@*<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>*@
+
+    
+@*    <script src="~/Scripts/jquery-ui-1.10.2/tests/jquery-1.9.1.js"></script>*@
+    <script>
+        $(function () {
+            $('.date').datepicker({ dateFormat: "dd/mm/yy" });
+        });
+    </script>
+</head>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $('.date').datepicker({ dateFormat: "dd/mm/yy" });
+        
+      
+    });
+</script>

@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Debt Collection System";
+    Layout = "~/Views/Table/DataTableColumnFilter_LayoutPage.cshtml";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                To learn more about ASP.NET MVC visit
+                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
+                If you have any questions about visit
+                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
+            </p>
+        </div>
+    </section>
+}
+@section head{
+
+<script language="javascript" type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $.datepicker.regional[""].dateFormat = 'dd/mm/yy';
+        $.datepicker.setDefaults($.datepicker.regional['']);
+
+        var oTable = $('#myDataTable').dataTable({
+            "bServerSide": true,
+            "sAjaxSource": "/Home/DataProviderAction",
+            "bJQueryUI": true
+        });
+
+        oTable.columnFilter({
+            aoColumns: [{ type: "number-range" },
+                        { type: "text" },
+                        { type: "select", values: ["London", "Essex", "Lothian", "Leicester", "Buckinghamshire"] },
+                        { type: "date-range" }
+                        ]
+        });
+
+    });
+ </script>
+
+}
+                <table id="myDataTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Company name</th>
+                            <th>Town</th>
+                            <th>Date Created</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>Company name</th>
+                            <th>Town</th>
+                            <th>Date Created</th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+
+

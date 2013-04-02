@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/Views/Company/JQueryDataTableEditableLayout.cshtml";
+}
+
+@section head{
+
+<script language="javascript" type="text/javascript">
+
+    $(document).ready(function () {
+        $('#myDataTable').dataTable().makeEditable();
+    });
+    
+
+     
+
+        
+</script>
+}
+
+
+
+<div id="demo">
+     <h1>Account Listing</h1>
+    <table id="myDataTable" class="display">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Card/Account No</th>
+                <th>OS Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+   
+         <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="@item.Name">
+                    <td>@item.CardNo</td>
+                    <td>@item.OSAmount</td>
+                    <td>@item.Status</td>
+                </tr>
+            }
+        </tbody>
+        @*<tfoot>
+            <tr>
+                <th>Full Name</th>
+                <th>Card/Account</th>
+                <th>OS Amount</th>
+                <th>Status</th>
+            </tr>
+        </tfoot>*@
+    </table>
+    <div class="add_delete_toolbar" />
+</div>
+
+    <form id="formAddNewRow" action="#" title="Add new account">
+        <label for="name">Name</label><input type="text" name="name" id="name" class="required" rel="0" />
+        <br />
+        <label for="name">Card No</label><input type="text" name="cardno" id="cardno" rel="1" />
+        <br />
+        <label for="name">OS Amount</label><input type="text" name="osmount" id="osamount"/>
+        <br />
+        <label for="name">Status</label><select name="status" id="status">
+                                            <option value="1">CPS</option>
+                                            <option value="2">TPS</option>
+                                            <option value="3">Others</option>
+                                         </select>
+                                         
+        <br />
+    </form>
+

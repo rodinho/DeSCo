@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DeSCo System</title>
+
+    @RenderSection("head", required: false)
+
+@*    <meta name="viewport" content="width=device-width" />*@
+ @*   <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
+    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />
+
+    @RenderSection("Content", false)
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    
+
+</head>
+<body style="font-size: 80%;">
+    <header>
+        <div  class="content-wrapper">
+            <div class="float-left"  >
+                <p  class="site-title" >@Html.ActionLink(".:: Credit Collection System ::.", "Index", "Home")</p>
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+                <nav>
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Account", "Customization", "Company")</li>
+                        <li>@Html.ActionLink("Payment", "", "")</li>
+                        <li>@Html.ActionLink("Admin", "", "")</li>
+                        <li>@Html.ActionLink("Audit", "", "")</li>
+                        <li>@Html.ActionLink("Report", "Contact", "Home")</li>
+                    </ul>
+                </nav>
+            </div>
+        </div> 
+    </header>
+    <div id="body" style="font-size: 80%;">
+     
+           <section class="content-wrapper main-content clear-fix">
+         
+        </section>
+
+    </div>
+    <div id="container">
+         @RenderBody()
+    </div>
+
+</body>
+</html>

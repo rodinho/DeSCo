@@ -1,0 +1,190 @@
+﻿@model IEnumerable<DeSCo.Models.Debtor>
+
+
+@{
+    ViewBag.Title = "Debtor Listing";
+    Layout = "~/Views/Company/JQueryDataTableEditableLayout.cshtml";
+}
+
+
+@section head{
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico" />
+
+    <!-- includes for Editor operation -->
+    <style type="text/css">
+        
+
+  	
+  </style>
+    @*<link href="~/Scripts/Editor/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/Scripts/Editor/TableTools.css" rel="stylesheet" />
+    <link href="~/Scripts/Editor/dataTables.editor.css" rel="stylesheet" />*@
+<link href="http://editor.datatables.net/release/DataTables/media/css/jquery.dataTables.css" rel="stylesheet" />
+	 <link href="http://editor.datatables.net/release/DataTables/extras/TableTools/media/css/TableTools.css" rel="stylesheet" />	
+     <link href="http://editor.datatables.net/release/DataTables/extras/Editor/media/css/dataTables.editor.css" rel="stylesheet" />
+
+@* 
+    <link href="~/Scripts/DataTables-1.9.4/media/css/demo_page.css" rel="stylesheet" />
+    <link href="~/Scripts/DataTables-1.9.4/media/css/shCore.css" rel="stylesheet" />*@
+      
+  @*  <link rel="stylesheet" type="text/css" href="http://editor.datatables.net/media/css/site.css">*@
+    <link href="~/Scripts/Editor/site.css" rel="stylesheet" />
+     @*   <script src="~/Scripts/Editor/jquery.js"></script>
+        <script src="~/Scripts/Editor/jquery.dataTables.js"></script>
+        <script src="~/Scripts/Editor/TableTools.js"></script>*@
+    
+
+       <script  charset="utf-8" src="http://editor.datatables.net/release/DataTables/media/js/jquery.js"></script>
+		<script  type="text/javascript" charset="utf-8" src="http://editor.datatables.net/release/DataTables/media/js/jquery.dataTables.js"></script>
+		<script  type="text/javascript" charset="utf-8" src="http://editor.datatables.net/release/DataTables/extras/TableTools/media/js/TableTools.js"></script>
+		<script  type="text/javascript" charset="utf-8" src="http://editor.datatables.net/release/DataTables/extras/Editor/media/js/dataTables.editor.js"></script>
+
+@*         //"sAjaxSource": "php/formOnlyData.php",*@
+
+  <script type="text/javascript" charset="utf-8" id="init-code" >
+
+        var editor; // use a global for the submit and return data rendering in the examples
+      
+      $(document).ready(function () {
+          
+            editor = new jQuery.fn.dataTable.Editor({
+               
+                  "ajaxUrl": "php/formOnlyData.php",
+                    "domTable": "#example",
+                    "fields": [
+                        {
+                        "label": "Name:",
+                        "name": "Name"
+                    }, {
+                        "label": "Account No",
+                        "name": "AcNo"
+                    }, {
+                        "label": "OS Amount:",
+                        "name": "OSAmt"
+                    }, {
+                        "label": "Status:",
+                        "name": "Status",
+                        "type": "select",
+                        "ipOpts": [
+                            { "label": "NEW", "value": "NEW" },
+                            { "label": "TPS", "value": "TPS" },
+                            { "label": "WIP", "value": "WIP" },
+                            { "label": "PTP", "value": "PTP" },
+                            { "label": "CP", "value": "CP"   },
+                            { "label": "ABT", "value": "ABT" },
+                            { "label": "SFV", "value": "SFV" } ]
+                    }, {
+                        "label": "Assigned To:",
+                        "name": "AssignTo"
+                    }, {
+                        "label": "Batch No:",
+                        "name": "BatchNumber"
+                    }, {
+                        "label": "New NRIC:",
+                        "name": "NewNRIC",
+                        //"type": "textarea"
+                    }
+                    //    {
+                    //    "label": "Old NRIC:",
+                    //    "name": "oldnric",
+                    //    //"type": "textarea"
+                    //}
+                    ]
+                } );
+           
+            var oTable = $('#example').dataTable
+            ({
+                    "sDom": "Tfrtip",
+                    "bServerSide": true,
+                    "sAjaxSource": "/Company/DataProviderAction",
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "aoColumns": [
+                        { "bSearchable": true },
+                        { "sTitle": "Name" },
+                        { "sTitle": "Account No" },
+                        { "sTitle": "OS Amount" },
+                        { "sTitle": "Status" },
+                        { "sTitle": "AssignTo" }
+                    ],
+                    "oTableTools": {
+                        "sRowSelect": "single",
+                        "aButtons": [
+                            { "sExtends": "editor_create", "editor": editor },
+                            { "sExtends": "editor_edit",   "editor": editor },
+                            { "sExtends": "editor_remove", "editor": editor }
+                                   ]
+                               }
+            }) ;
+          
+            oTable.columnFilter({
+                aoColumns: [{ type: "text" },
+                            { type: "text" },
+                            { type: "text" },
+                            { type: "text" },
+                            { type: "text" }
+                ]
+            });
+           //     oTable.fnSetColumnVis(0, false);
+      });
+      
+    
+
+    </script>
+}
+
+
+<div id="demo"  >
+
+    @*    <table cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%">
+        <thead>
+            <tr>
+                <th width="30%">Name</th>
+                <th width="12%>Account No</th>
+                <th width="18%>OS Amount</th>
+                <th width="15%">Status</th>
+                <th width="25%">Assigned To</th>
+            </tr>
+        </thead>
+     
+    </table>*@
+    
+<table  cellpadding="0" cellspacing="0" border="0" class="display" id="example"  >
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Account No</th>
+                <th>OS Amount</th>
+                <th>Status</th>
+                <th>Assigned To</th>
+
+            </tr>
+        </thead>
+
+         <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="@item.ID">
+                    <td>@item.Name</td>
+                    <td>@item.AcNo</td>
+                    <td>@item.OSAmount</td>
+                    <td>@item.Status</td>
+                    <td>@item.AssignTo</td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+      
+       
+
+
+
+    
+
+</div>
+
+
+

@@ -1,0 +1,237 @@
+﻿@{
+    ViewBag.Title = "Account Listing";
+    Layout = "~/Views/Company/JQueryDataTableEditableLayout.cshtml";
+}
+
+
+@section head{
+
+    <style type="text/css" media="screen">
+        div.dataTables_wrapper {
+            font-size: 13px;
+        }
+
+        table.display thead th, table.display td {
+            font-size: 13px;
+        }
+    </style>
+    <link href="~/Scripts/themes/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+   
+    <script src="@Url.Content("~/Scripts/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Scripts/jquery.dataTables.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Scripts/jquery.jeditable.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Scripts/jquery-ui.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Scripts/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Scripts/jquery.dataTables.editable.js")" type="text/javascript"></script>
+
+    <link href="@Url.Content("~/Content/dataTables/demo_table.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/dataTables/demo_table_jui.css")" rel="stylesheet" type="text/css" />
+
+    <link href="~/Scripts/themes/base/jquery-ui.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jAlert/jquery.alerts.js"></script>
+    <link href="~/Scripts/jAlert/jquery.alerts.css" rel="stylesheet" />
+
+    <script language="javascript" type="text/javascript">
+
+        $(document).ready(function () {
+            $('#myDataTable').dataTable({
+                "bJQueryUI": true,
+                "sPaginationType": "full_numbers"
+            }).makeEditable({
+                sUpdateURL: "/company/UpdateData",
+                sAddURL: "/company/AddData",
+                sDeleteURL: "/company/DeleteData",
+                sEditURL: "/company/DeleteData",
+
+                sAddNewRowFormId: "formAddNewDebtor",
+                sAddNewRowButtonId: "btnAddNewDebtor",
+                sAddNewRowOkButtonId: "btnAddNewDebtorOk",
+                sAddNewRowCancelButtonId: "btnAddNewDebtorCancel",
+                sDeleteRowButtonId: "btnDeleteDebtor",
+                sEditRowButtonId: "btnEditDebtor",
+
+                fnShowError: function(message, action) {
+                    switch (action) {
+                    case "update":
+                        jAlert(message, "Update failed");
+                        break;
+                    case "delete":
+                        jAlert(message, "Delete failed");
+                        break;
+                    case "add":
+                        $("#lblAddError").html(message);
+                        $("#lblAddError").show();
+                        break;
+                    }
+                },
+                fnStartProcessingMode: function() {
+                    $("#processing_message").dialog();
+                },
+                fnEndProcessingMode: function() {
+                    $("#processing_message").dialog("close");
+                }
+            });
+
+
+            $(function() {
+
+                $(".btnExport").click(function() {
+
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: '@Url.Action("Export","Company")',
+                            dataTyp: "html",
+                            success: function(result) {
+                                // whatever I did here on success
+                                alert("Data successfully export to excel");
+                            }
+                        });
+                });
+            });
+            
+            $(function() {
+                $("#btnExport").click(function () {
+                    document.location = '@Url.Action("Export","Company")';
+                  });
+            });
+            
+
+            $(function () {
+                $("#btnAdd").click(function () {
+                    document.location = '@Url.Action("Create","Company")';
+            });
+            });
+            
+
+        });
+      
+        
+        
+      
+    </script>
+}
+
+
+<div id="demo" style="font-size: 80%;"  >
+    
+    <table>
+
+
+        <tr>
+            <td>
+                <label>NEW :</label></td>
+            <td>@ViewBag.NewStatus</td>
+            <td>
+                <label>WIP :</label></td>
+            <td>@ViewBag.WIPStatus</td>
+            <td>
+                <label>PTP :</label></td>
+            <td>@ViewBag.PTPStatus</td>
+            <td>
+                <label>CP :</label></td>
+            <td>@ViewBag.CPStatus</td>
+            <td>
+                <label>ABT :</label></td>
+            <td>@ViewBag.ABTStatus</td>
+            <td>
+                <label>TPS :</label></td>
+            <td>@ViewBag.TPSStatus</td>
+            <td>
+                <label>SFV :</label></td>
+            <td>@ViewBag.SFVStatus</td>
+            <td>
+                <label><b>TOTAL :</b></label></td>
+            <td>@ViewBag.Total</td>
+        </tr>
+
+
+
+    </table>
+
+    <table id="myDataTable" class="display">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>New IC</th>
+                 <th>Old IC</th>
+                <th>Account No</th>
+                <th>OSAmount</th>
+                <th>Loan With</th>
+                <th>Status</th>
+                <th>AssignTo</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="@item.Id">
+                    <td>@item.Name</td>
+                    <td>@item.NewNRIC</td>
+                    <td>@item.OldNRIC</td>
+                    <td>@item.AcNo</td>
+                    <td>@item.OSAmount</td>
+                    <td>@item.OweTo</td>
+                    <td>@item.DisplayStatus</td>
+                   <td>@item.AssignTo</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) 
+                        @*  @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @* <button id="btnAddNewDebtor" value="Ok" >Add new account...</button>
+     <button id="btnAdd" value="Add">Add new account...</button>*@
+     <button id="btnAdd" value="Add">Add new account</button>
+    <button id="btnExport" value="btnExport">Export to excel</button>
+   
+   
+    @*    <p style="font-size: 180%;" align="right">@Html.ActionLink("Export", "Export","Company") </p> *@
+
+
+
+</div>
+
+<div id="processing_message" style="display: none" title="Processing">Please wait while your request is being processed...</div>
+
+
+@*<form id="formAddNewDebtor"  action="#" title="Add new debtor" >
+
+    <label for="name">Name</label><input type="text" name="name" id="name" class="required" rel="0" />
+    <br />
+    <label for="name">CardNo</label><input type="text" name="cardno" id="cardno" rel="1" />
+    <br />
+    <label for="name">OSAmount</label><input type="text" name="osamount" id="osamount" rel="2" />
+    <br />
+    <label for="name">NewNRIC</label><input type="text" name="newnric" id="newnric" rel="3" />
+    <br />
+    <label for="name">Status</label><select name="status" id="status" rel="4">
+        <option value="TPS">NEW</option>
+        <option value="CP">CP</option>
+        <option value="WIP">WIP</option>
+        <option value="TPS">TPS</option>
+        <option value="TPS">ABS</option>
+        <option value="TPS">ABT</option>
+        <option value="TPS">ARP</option>
+        <option value="TPS">PTP</option>
+    </select>
+    <br />
+    <label for="name">AssignTo</label><select name="assignto" id="assignto" rel="5">
+        <option value="Azri">Azri</option>
+        <option value="Aimi">Aimi</option>
+
+    </select>
+
+    <br />
+    <br />
+
+</form>*@
+

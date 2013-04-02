@@ -1,0 +1,94 @@
+﻿@*<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">*@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>JQuery DataTables/ASP.NET MVC Integration</title>
+
+    <link rel="shortcut icon" type="image/ico" href="/media/images/favicon.ico">
+		<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+	   <link href="@Url.Content("~/Scripts/DataTables-1.9.4/media/css/demo_page.css")" rel="stylesheet" type="text/css" />
+              <link href="@Url.Content("~/Scripts/DataTables-1.9.4/media/css/demo_table.css")" rel="stylesheet" type="text/css" />	
+              <link href="@Url.Content("~/Scripts/DataTables-1.9.4/media/css/TableTools.css")" rel="stylesheet" type="text/css" />
+		<style type="text/css" media="screen">
+			
+			div.dataTables_wrapper { font-size: 13px; }
+			table.display thead th, table.display td { font-size: 13px; }
+		</style>
+
+ 
+    <script src="~/Scripts/DataTables-1.9.4/media/js/jquery.dataTables.js"></script>
+    <script src="~/Scripts/DataTables-1.9.4/media/js/jquery.dataTables.min.js"></script>
+   
+    <script src="~/Scripts/DataTables-1.9.4/media/js/jquery.js"></script>
+    <script src="~/Scripts/DataTables-1.9.4/extras/TableTools/media/js/TableTools.js"></script>
+    <script src="~/Scripts/DataTables-1.9.4/extras/TableTools/media/js/TableTools.min.js"></script>
+
+   
+
+    <script type="text/javascript" charset="utf-8">
+
+		</script>
+
+    @RenderSection("head", required: false)
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    @*<link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />*@
+    @RenderSection("Content", false)
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+
+<body>
+
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">@Html.ActionLink(".:: Credit Collection System ::.", "Index", "Home")</p>
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+                <nav>
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Account", "Index", "Table")</li>
+                        <li>@Html.ActionLink("Payment", "Index", "Table")</li>
+                        <li>@Html.ActionLink("Admin", "Index", "Table")</li>
+                        <li>@Html.ActionLink("Audit", "Index", "Table")</li>
+                        <li>@Html.ActionLink("Report", "Contact", "Home")</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="body">
+      
+
+        <section class="content-wrapper main-content clear-fix">
+            @*@RenderBody()*@
+        </section>
+
+    </div>
+
+
+    <div id="container">
+        <div id="demo">
+            @RenderBody()
+        </div>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

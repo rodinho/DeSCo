@@ -1,0 +1,351 @@
+﻿@model DeSCo.Models.Creditor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Creditor</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BatchNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BatchNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FullName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FullName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OldNRIC)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OldNRIC)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NewNRIC)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NewNRIC)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CardNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CardNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AcNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AcNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OffTel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OffTel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ResTel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ResTel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HPNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HPNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AssignTo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AssignTo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AssignDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AssignDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AbortDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AbortDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OSAmount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OSAmount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MinPymt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MinPymt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DueDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DueDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastPaidAmt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastPaidAmt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastPaidDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastPaidDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HSLDOSAmount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HSLDOSAmount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TPS1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TPS1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TPS2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TPS2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TPS3)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TPS3)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OweTo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OweTo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TPSStatus)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TPSStatus)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Region)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Region)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Product)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Product)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TltAmtDue)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TltAmtDue)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MinPayment1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MinPayment1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MinPayment2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MinPayment2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MIA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MIA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Guarantor1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Guarantor1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GuAdd1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GuAdd1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GuAdd2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GuAdd2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GuAdd3)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GuAdd3)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GuOffTel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GuOffTel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GuResTel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GuResTel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GuHPTel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GuHPTel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Guarantor2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Guarantor2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gu2Add1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gu2Add1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gu2Add2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gu2Add2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gu2Add3)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gu2Add3)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gu2OffTel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gu2OffTel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gu2ResTel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gu2ResTel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gu2HPTel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gu2HPTel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Others1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Others1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Others2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Others2)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
